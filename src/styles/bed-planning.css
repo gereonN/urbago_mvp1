@@ -1,0 +1,128 @@
+.bed-planning-page {
+  padding: var(--space-l) 0;
+}
+
+.selectable-plant-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+}
+
+.selectable-plant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-level-2);
+}
+
+.selectable-plant-card.selected {
+  border: 2px solid var(--color-primary-light);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+.selection-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: var(--space-m);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-input {
+  width: 100%;
+  max-width: 300px;
+  padding: var(--space-s);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-base);
+}
+
+.bed-area {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary-dark);
+}
+
+.bed-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: var(--space-l) 0;
+}
+
+.bed-rectangle {
+  background-color: var(--color-primary-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-m);
+  border-radius: var(--radius-small);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  min-width: 100px;
+  min-height: 60px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+.plan-content {
+  margin-top: var(--space-l);
+}
+
+.plants-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-m) 0;
+}
+
+.plants-table th, .plants-table td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-s);
+  text-align: left;
+}
+
+.plants-table th {
+  background-color: var(--color-background-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.bed-visual {
+  background-color: var(--color-background-secondary);
+  padding: var(--space-m);
+  border-radius: var(--radius-small);
+  overflow-x: auto;
+  font-family: monospace;
+  white-space: pre;
+  line-height: 1.2;
+}
+
+@media (max-width: 767px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .bed-visual {
+    font-size: 0.8em;
+  }
+}

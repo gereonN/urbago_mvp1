@@ -1,0 +1,47 @@
+/* Main CSS file for Urbago */
+
+/* Import design system files */
+@import './variables.css';
+@import './typography.css';
+@import './layout.css';
+@import './components.css';
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-background-primary);
+}
+
+/* Additional global styles */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
