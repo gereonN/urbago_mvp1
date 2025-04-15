@@ -172,3 +172,12 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Vercel related
+cat <<EOL > .gitignore
+node_modules/
+.next/
+.env
+.DS_Store
+*.log
+EOL
