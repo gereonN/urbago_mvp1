@@ -2,19 +2,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--primary-light);
-  color: var(--text-light);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
-.logoText {
-  color: var(--text-light);
+.logoImage {
+  height: auto;
   cursor: pointer;
 }
 
@@ -31,20 +31,25 @@
 }
 
 .navItem {
-  margin-left: 1.5rem;
+  margin-left: 2rem;
 }
 
 .navLink {
-  color: var(--text-light);
+  color: #333;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: color 0.3s;
 }
 
 .navLink:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+}
+
+/* First nav item (Dein Garten) in green */
+.navList .navItem:first-child .navLink {
+  color: var(--primary);
 }
 
 @media (max-width: 768px) {

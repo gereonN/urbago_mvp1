@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -7,7 +8,14 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link href="/">
-          <span className={styles.logoText}>Urbago</span>
+          <Image 
+            src="/images/Urbago_logo_nebeneinander_schwarz.svg" 
+            alt="Urbago Logo" 
+            width={140} 
+            height={40} 
+            priority
+            className={styles.logoImage}
+          />
         </Link>
       </div>
       <nav className={styles.nav}>
