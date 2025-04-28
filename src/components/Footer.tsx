@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className={styles.copyright}>
-          © {new Date().getFullYear()} Urbago - Dein Garten-Assistent
+          © {new Date().getFullYear()} Urbago MVP AI Gardening Agent - Bring deine urbane Oase zum Blühen! 🌱
         </div>
       </div>
     </footer>

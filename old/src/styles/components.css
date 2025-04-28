@@ -1,0 +1,294 @@
+/* Components System for Urbago */
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-m);
+  border-radius: var(--radius-small);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 40px;
+  min-width: 120px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-light);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.btn-small {
+  min-height: 32px;
+  padding: calc(var(--space-xs) / 2) var(--space-s);
+  font-size: var(--font-size-sm);
+}
+
+.btn-large {
+  min-height: 48px;
+  padding: var(--space-s) var(--space-l);
+}
+
+/* Card Styles */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-standard);
+  box-shadow: var(--shadow-level-1);
+  padding: var(--space-m);
+  transition: box-shadow var(--transition-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-level-2);
+}
+
+.card-header {
+  margin-bottom: var(--space-m);
+}
+
+.card-body {
+  margin-bottom: var(--space-m);
+}
+
+.card-footer {
+  margin-top: var(--space-m);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: var(--space-m);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-s);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-small);
+  transition: border-color var(--transition-fast);
+  height: 40px;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary-light);
+  outline: none;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-s);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-small);
+  transition: border-color var(--transition-fast);
+  height: 40px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-s) center;
+  background-size: 16px;
+}
+
+.form-select:focus {
+  border-color: var(--color-primary-light);
+  outline: none;
+}
+
+.form-checkbox, .form-radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.form-checkbox input, .form-radio input {
+  margin-right: var(--space-xs);
+}
+
+.form-help-text {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.form-error-text {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--space-xs) / 2) var(--space-s);
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+}
+
+.badge-primary {
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary-light-orange);
+  color: var(--color-white);
+}
+
+.badge-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.badge-warning {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+}
+
+.badge-error {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+/* Alert Styles */
+.alert {
+  padding: var(--space-m);
+  border-radius: var(--radius-standard);
+  margin-bottom: var(--space-m);
+}
+
+.alert-success {
+  background-color: rgba(140, 198, 63, 0.1);
+  border-left: 4px solid var(--color-success);
+  color: var(--color-primary-dark);
+}
+
+.alert-warning {
+  background-color: rgba(251, 176, 64, 0.1);
+  border-left: 4px solid var(--color-warning);
+  color: var(--color-secondary-dark-orange);
+}
+
+.alert-error {
+  background-color: rgba(237, 28, 36, 0.1);
+  border-left: 4px solid var(--color-error);
+  color: var(--color-secondary-dark-red);
+}
+
+.alert-info {
+  background-color: rgba(247, 148, 29, 0.1);
+  border-left: 4px solid var(--color-info);
+  color: var(--color-secondary-dark-orange);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background-color: var(--color-border-light);
+  margin: var(--space-m) 0;
+}
+
+/* Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-round);
+  object-fit: cover;
+}
+
+.avatar-small {
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-large {
+  width: 64px;
+  height: 64px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--space-s) 0;
+  list-style: none;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: "/";
+  margin: 0 var(--space-xs);
+  color: var(--color-text-tertiary);
+}
+
+.breadcrumb-item a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: var(--color-text-tertiary);
+}
+
+/* Responsive Utilities for Components */
+@media (max-width: 767px) {
+  .btn-full-mobile {
+    width: 100%;
+  }
+  
+  .card {
+    padding: var(--space-s);
+  }
+}

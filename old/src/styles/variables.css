@@ -1,0 +1,85 @@
+:root {
+  /* Colors - Primary */
+  --color-primary-light: #8CC63F; /* Hellgrün */
+  --color-primary-dark: #006838; /* Dunkelgrün */
+  
+  /* Colors - Secondary */
+  --color-secondary-light-red: #ED1C24; /* Hellrot */
+  --color-secondary-dark-red: #BE1E2D; /* Dunkelrot */
+  --color-secondary-light-orange: #FBB040; /* Hellorange */
+  --color-secondary-dark-orange: #F7941D; /* Dunkelorange */
+  
+  /* Colors - Neutral */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-brown: #603813; /* Stiele der Früchte */
+  
+  /* Colors - Functional */
+  --color-success: var(--color-primary-light);
+  --color-warning: var(--color-secondary-light-orange);
+  --color-error: var(--color-secondary-light-red);
+  --color-info: var(--color-secondary-dark-orange);
+  
+  /* Text Colors */
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #666666;
+  --color-text-disabled: #999999;
+  --color-text-inverse: var(--color-white);
+  
+  /* Background Colors */
+  --color-background-primary: var(--color-white);
+  --color-background-secondary: #F5F5F5;
+  --color-background-tertiary: #EEEEEE;
+  
+  /* Border Colors */
+  --color-border-light: #E0E0E0;
+  --color-border-medium: #CCCCCC;
+  --color-border-dark: #999999;
+  
+  /* Spacing - Based on 8px grid */
+  --space-xs: 4px;   /* 0.5x base */
+  --space-s: 8px;    /* 1x base */
+  --space-m: 16px;   /* 2x base */
+  --space-l: 24px;   /* 3x base */
+  --space-xl: 32px;  /* 4x base */
+  --space-xxl: 48px; /* 6x base */
+  --space-xxxl: 64px; /* 8x base */
+  
+  /* Border Radius */
+  --radius-small: 4px;
+  --radius-standard: 8px;
+  --radius-large: 16px;
+  --radius-round: 50%;
+  
+  /* Shadows */
+  --shadow-level-1: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-level-2: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-level-3: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-level-4: 0 16px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-standard: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Z-index layers */
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-fixed: 300;
+  --z-index-modal-backdrop: 400;
+  --z-index-modal: 500;
+  --z-index-popover: 600;
+  --z-index-tooltip: 700;
+  
+  /* Container widths */
+  --container-max-width: 1200px;
+  --container-padding-mobile: var(--space-m);
+  --container-padding-tablet: var(--space-l);
+  --container-padding-desktop: var(--space-xl);
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1440px;
+}

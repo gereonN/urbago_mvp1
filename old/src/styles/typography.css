@@ -1,0 +1,174 @@
+/* Typography System for Urbago */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Font Families */
+  --font-primary: 'Inter', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-secondary: 'Montserrat', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Font Sizes - Fluid Typography with clamp() */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-size-lg: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-size-xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-size-2xl: clamp(2rem, 1.8rem + 1vw, 2.5rem);
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-headings: 1.2;
+  --line-height-body: 1.5;
+  --line-height-list: 1.4;
+  --line-height-buttons: 1.2;
+  
+  /* Letter Spacing */
+  --letter-spacing-headings: -0.02em;
+  --letter-spacing-body: 0;
+  --letter-spacing-buttons: 0.02em;
+  --letter-spacing-caps: 0.05em;
+}
+
+/* Base Typography Styles */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, .h1 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-headings);
+  letter-spacing: var(--letter-spacing-headings);
+  margin-bottom: var(--space-l);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-headings);
+  letter-spacing: var(--letter-spacing-headings);
+  margin-bottom: var(--space-m);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-headings);
+  letter-spacing: var(--letter-spacing-headings);
+  margin-bottom: var(--space-m);
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: var(--space-m);
+}
+
+/* Small Text */
+small, .text-small {
+  font-size: var(--font-size-sm);
+}
+
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+/* Text Styles */
+.text-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.text-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-caps);
+}
+
+/* Links */
+a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: var(--space-m);
+  padding-left: var(--space-xl);
+  line-height: var(--line-height-list);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Responsive Text Alignment */
+@media (max-width: 767px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+  
+  h1, .h1 {
+    text-align: center;
+  }
+}
+
+/* Button Typography */
+.btn {
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-buttons);
+  line-height: var(--line-height-buttons);
+}
+
+.btn-primary {
+  font-weight: var(--font-weight-medium);
+}
+
+.btn-secondary {
+  font-weight: var(--font-weight-regular);
+}
+
+/* Form Typography */
+label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+input, select, textarea {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+}
+
+.help-text {
+  font-size: var(--font-size-xs);
+}
+
+.error-text {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-error);
+}

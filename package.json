@@ -1,6 +1,7 @@
 {
-  "name": "urbago-project",
+  "name": "urbago-mvp-ai-gardening-agent",
   "version": "0.1.0",
+  "description": "Urbago MVP AI Gardening Agent - developed in multiagent environment with different roles",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,6 +11,7 @@
   },
   "dependencies": {
     "next": "^14.0.0",
+    "openai": "^4.96.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
