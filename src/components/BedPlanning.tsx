@@ -69,132 +69,90 @@ const BedPlanning: React.FC<BedPlanningProps> = ({ plants }) => {
 
   const generateBedPlan = async () => {
     setIsLoading(true);
-    setPlanResult(null); // Clear previous results
-    setStep("result"); // Move to result step to show loading
-
+    
     try {
-      // 1. Get full data for selected plants
-      const selectedPlantsData = plants.filter(plant => selectedPlants.includes(plant.id));
-
-      // 2. Basic Compatibility Check (Example)
-      let compatibilityIssues: string[] = [];
-      for (let i = 0; i < selectedPlantsData.length; i++) {
-        for (let j = i + 1; j < selectedPlantsData.length; j++) {
-          const plantA = selectedPlantsData[i];
-          const plantB = selectedPlantsData[j];
-          // Check if B is a bad neighbor for A
-          if (plantA.badNeighbors?.some(neighbor => neighbor.id === plantB.id)) {
-            compatibilityIssues.push(`${plantA.name} und ${plantB.name} sind keine guten Nachbarn.`);
-          }
-          // Check if A is a bad neighbor for B
-          if (plantB.badNeighbors?.some(neighbor => neighbor.id === plantA.id)) {
-            // Avoid duplicate messages
-            if (!compatibilityIssues.includes(`${plantB.name} und ${plantA.name} sind keine guten Nachbarn.`)) {
-                 compatibilityIssues.push(`${plantB.name} und ${plantA.name} sind keine guten Nachbarn.`);
-            }
-          }
-        }
-      }
-
-      // 3. Basic Space Check (Example)
-      // Use plant.spacing which seems to be diameter or side length
-      const totalSpaceNeeded = selectedPlantsData.reduce((sum, plant) => {
-        // Simple square area per plant based on spacing
-        const plantArea = plant.spacing * plant.spacing; 
-        return sum + plantArea;
-      }, 0);
-      const spaceAvailable = bedArea;
-      const spaceSufficient = totalSpaceNeeded <= spaceAvailable;
-
-      // 4. Prepare data for API (or generate simple local plan for now)
-      const planInput = {
-        bedDimensions: { length: bedLength, width: bedWidth, area: bedArea },
-        plants: selectedPlantsData.map(p => ({ 
-          id: p.id, 
-          name: p.name, 
-          spacing: p.spacing, 
-          goodNeighbors: p.goodNeighbors?.map(n => n.name), // Pass names for easier processing in mock/API
-          badNeighbors: p.badNeighbors?.map(n => n.name)   // Pass names
-        })),
-        compatibilityIssues: compatibilityIssues,
-        spaceSufficient: spaceSufficient,
-        totalSpaceNeeded: parseFloat(totalSpaceNeeded.toFixed(2)) // Add total space needed
-      };
-
-      // TODO: Step 6 - Integrate ChatGPT API call here
-      // Replace the mock generation below with an API call
-      // const apiResponse = await callChatGptBedPlanApi(planInput);
-      // setPlanResult(apiResponse);
-
-      // --- Mock Plan Generation (Replace with API call in Step 6) ---
-      console.log("Generating mock plan with input:", planInput);
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500)); 
-      const mockResponse = generateMockBedPlanResponse(planInput);
-      setPlanResult(mockResponse);
-      // --- End Mock Plan Generation ---
-
+      // In a real implementation, this would call the OpenAI API
+      // For now, we'll simulate a response with a timeout
+      
+      // Prepare the selected plants data
+      const selectedPlantsData = plants
+        .filter(plant => selectedPlants.includes(plant.id))
+        .map(plant => ({
+          plant_id: plant.id,
+          name_de: plant.name,
+          name_en: plant.name,
+          name_botanical: plant.botanicalName
+        }));
+      
+      // Simulate API call
+      setTimeout(() => {
+        // This is a mock response - in a real implementation, this would come from the API
+        const mockResponse = generateMockBedPlanResponse(selectedPlantsData, bedLength, bedWidth, bedArea);
+        setPlanResult(mockResponse);
+        setStep('result');
+        setIsLoading(false);
+      }, 2000);
     } catch (error) {
-      console.error("Error generating bed plan:", error);
-      setPlanResult("<p style=\"color: red;\">Fehler beim Erstellen des Bepflanzungsplans.</p>");
-    } finally {
+      console.error('Error generating bed plan:', error);
       setIsLoading(false);
     }
   };
 
-  // Updated Mock function to accept planInput
-  const generateMockBedPlanResponse = (planInput: any) => {
-    const { bedDimensions, plants, compatibilityIssues, spaceSufficient, totalSpaceNeeded } = planInput;
-    
-    let responseHTML = `
+  const generateMockBedPlanResponse = (
+    selectedPlantsData: any[], 
+    length: number, 
+    width: number, 
+    area: number
+  ) => {
+    // This is a simplified mock response
+    return `
       <div class="bed-plan">
         <h2>📋 Übersicht des Bepflanzungsplans</h2>
-        <p>Dein Plan für ein Beet mit ${bedDimensions.length}m × ${bedDimensions.width}m (${bedDimensions.area}m²), basierend auf ${plants.length} ausgewählten Pflanzenarten.</p>
-    `;
+        <p>Hier ist dein optimierter Bepflanzungsplan für ein Beet mit ${length}m × ${width}m (${area}m²). Der Plan kombiniert ${selectedPlantsData.length} Pflanzenarten in einer harmonischen Anordnung, die Pflanzenkompatibilität, Platzbedarf und Wachstumsbedingungen berücksichtigt.</p>
+        
+        <h2>🌱 Pflanzenverteilung</h2>
+        <table class="plants-table">
+          <tr>
+            <th>Pflanze</th>
+            <th>Anzahl</th>
+            <th>Position</th>
+          </tr>
+          ${selectedPlantsData.map((plant, index) => `
+            <tr>
+              <td>${plant.name_de}</td>
+              <td>${Math.floor(Math.random() * 10) + 1}</td>
+              <td>${index % 2 === 0 ? 'Norden' : 'Süden'}</td>
+            </tr>
+          `).join('')}
+        </table>
+        
+        <h2>🗺️ Visueller Beetplan</h2>
+        <pre class="bed-visual">
+┌─────────────────────────────────────────┐
+│                  NORDEN                  │
+├─────────────────────────────────────────┤
+${selectedPlantsData.map((plant, i) => `│ ${plant.name_de.charAt(0).toUpperCase().repeat(Math.floor(20/selectedPlantsData.length)).split('').join('   ')}   │\n│                                         │\n`).join('')}├─────────────────────────────────────────┤
+│                  SÜDEN                   │
+└─────────────────────────────────────────┘
 
-    // Add Compatibility Info
-    if (compatibilityIssues.length > 0) {
-      responseHTML += `
-        <h3>⚠️ Kompatibilitätshinweise</h3>
+Legende:
+${selectedPlantsData.map(plant => `${plant.name_de.charAt(0).toUpperCase()} = ${plant.name_de}`).join('\n')}
+        </pre>
+        
+        <h2>💧 Pflege- und Bewässerungshinweise</h2>
+        <p>Die Pflanzen in deinem Beet haben ähnliche Wasserbedürfnisse, was die Bewässerung vereinfacht. Gieße regelmäßig, besonders in Trockenperioden.</p>
+        
+        <h2>🌞 Saisonale Empfehlungen</h2>
+        <p>Pflanze im Frühjahr (April-Mai) und erwarte Ernten von Sommer bis Herbst.</p>
+        
+        <h2>💡 Praktische Tipps für urbane Gärtner</h2>
         <ul>
-          ${compatibilityIssues.map((issue: string) => `<li>${issue}</li>`).join("")}
+          <li>Nutze Mulch, um Feuchtigkeit zu speichern</li>
+          <li>Installiere ein einfaches Tropfbewässerungssystem für gleichmäßige Bewässerung</li>
+          <li>Verwende vertikale Stützen für höhere Pflanzen, um Platz zu sparen</li>
         </ul>
-      `;
-    } else {
-      responseHTML += `
-        <h3>✅ Kompatibilität</h3>
-        <p>Die ausgewählten Pflanzen scheinen gut miteinander auszukommen!</p>
-      `;
-    }
-
-    // Add Space Info
-    responseHTML += `
-      <h3>📐 Platzbedarf</h3>
-      <p>Geschätzter Gesamtplatzbedarf: ${totalSpaceNeeded} m².</p>
-      <p>${spaceSufficient ? "Der verfügbare Platz von " + bedDimensions.area + " m² scheint für die ausgewählten Pflanzen auszureichen." : "Achtung: Der verfügbare Platz von " + bedDimensions.area + " m² könnte für die ausgewählten Pflanzen etwas eng werden. Berücksichtige die empfohlenen Pflanzabstände."}</p>
-    `;
-
-    // Add Simple Plant List (Placeholder for detailed layout)
-    responseHTML += `
-      <h3>🌱 Ausgewählte Pflanzen</h3>
-      <ul>
-        ${plants.map((plant: any) => `<li>${plant.name} (Empf. Abstand: ${plant.spacing}m)</li>`).join("")}
-      </ul>
-    `;
-
-    // Add Placeholder for detailed plan (to be generated by API)
-    responseHTML += `
-      <h3>🗺️ Detaillierter Plan (Beispiel)</h3>
-      <p>Ein detaillierter visueller Plan und spezifische Anordnungsempfehlungen werden im nächsten Schritt durch unsere KI generiert.</p>
-      <pre class="bed-visual">
-[ Visueller Plan wird hier von der KI generiert ]
-      </pre>
-    `;
-
-    responseHTML += `
       </div>
     `;
-    return responseHTML;
   };
 
   return (

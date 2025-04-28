@@ -1,0 +1,70 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: auto;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin-left: 2rem;
+}
+
+.navLink {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+/* First nav item (Dein Garten) in green */
+.navList .navItem:first-child .navLink {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .navList {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .navItem {
+    margin: 0.5rem;
+  }
+}
